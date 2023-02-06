@@ -12,10 +12,24 @@ export const App = () => {
   const positivePercentage = countPositiveFeedbackPercentage();
   const isEmptyList = !total;
   
-  const onLeaveFeedback = evt => {
-    setGood(prevState => prevState + 1);
-    setNeutral(prevState => prevState + 1);
-    setBad(prevState => prevState + 1);
+  const onLeaveFeedback = event => {
+    const { name } = event.target;
+
+    switch (name) {
+      case 'good':
+        setGood(good + 1);
+        break;
+
+      case 'neutral':
+        setNeutral(neutral + 1);
+        break;
+
+      case 'bad':
+        setBad(bad + 1);
+        break;
+
+      default:
+    }
   };
 
   function countTotalFeedback() {
